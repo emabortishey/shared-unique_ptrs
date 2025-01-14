@@ -14,9 +14,12 @@ class user_unique_ptr
 public:
 	user_unique_ptr() : ptr{ nullptr } { };
 	explicit user_unique_ptr(T& obj_P) : ptr{ &obj_P } { };
-	explicit user_unique_ptr(T* ptr_P) : ptr{ ptr_P } { };
+	// запрет на конструктор копирования
 	explicit user_unique_ptr(user_unique_ptr& ptr_P) = delete;
 
+	// в остальном методы почти те же 
+	// самые как и в unique ptr только без
+	// наворотов в виде списка указателей
 	T* get() { return ptr; }
 
 	void reset(T* new_ptr = nullptr) { ptr = new_ptr; }

@@ -5,6 +5,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
+	// проверка методов и перегрузок класса user_shared_ptr
 	cout << "РАБОТА С SHARED PTR: ";
 
 	int ff = 5;
@@ -35,6 +36,7 @@ int main()
 
 	cout << "\nИнициализация третьего указателя вторым с помощью конструктора копирования: " << *test3.get();
 
+	// проверка методов и перегрузок класса user_unique_ptr
 	cout << "\n\n\nnРАБОТА С UNIQUE PTR: ";
 
 	int ff1 = 5;
