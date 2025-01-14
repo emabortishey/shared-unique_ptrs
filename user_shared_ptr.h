@@ -95,6 +95,12 @@ public:
 		// текущего наличия элемента в списке
 		bool count = false;
 
+		if (new_ptr == nullptr)
+		{
+			ptr = nullptr;
+			return;
+		}
+
 		// поиск этого указателя в списке
 		for (auto buff : ptrlist)
 		{
