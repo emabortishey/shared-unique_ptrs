@@ -6,13 +6,12 @@
 
 using namespace std;
 
-
 template<class T>
 class user_shared_ptr
 {
 	T* ptr;
-public:
 	static list<pair<T*&, int>> ptrlist;
+public:
 	user_shared_ptr() : ptr{ nullptr } { };
 	explicit user_shared_ptr(T& obj_P) : ptr{ &obj_P }
 	{
@@ -24,7 +23,7 @@ public:
 
 		for (auto buff : ptrlist)
 		{
-			if (ptr_P == buff.first)
+			if (ptr == buff.first)
 			{
 				buff.second++;
 
@@ -33,9 +32,27 @@ public:
 		}
 		if(count == false)
 		{
-			ptrlist.push_back(pair<T*&, int>(ptr_P, 1)); 
+			ptrlist.push_back(pair<T*&, int>(ptr, 1)); 
 		}
 	};
+	explicit user_shared_ptr(user_shared_ptr& ptr_P) : ptr{ ptr_P.ptr }
+	{
+		bool count = false;
+
+		for (auto buff : ptrlist)
+		{
+			if (ptr == buff.first)
+			{
+				buff.second++;
+
+				count = true;
+			}
+		}
+		if (count == false)
+		{
+			ptrlist.push_back(pair<T*&, int>(ptr, 1));
+		}
+	}
 
 	T* get() { return ptr; }
 
