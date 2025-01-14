@@ -23,5 +23,7 @@ int main()
 		cout << buff.first << ' ' << *buff.first << ' ' << buff.second << '\n';
 	}
 
+	cout << test.get_typename();
+
 	return 0;
 }

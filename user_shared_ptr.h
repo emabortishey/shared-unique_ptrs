@@ -71,7 +71,7 @@ public:
 		ptrlist.push_back(pair<T*&, int>(ptr, 1));
 	}
 
-	typename get_typename() { return T; }
+	string get_typename() { return typeid(*ptr).name(); } 
 
 	~user_shared_ptr()
 	{
