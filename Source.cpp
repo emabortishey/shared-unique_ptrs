@@ -8,7 +8,7 @@ int main()
 	setlocale(LC_ALL, "Russian");
 
 	int ff = 5;
-	user_shared_ptr<int> test{ &ff };
+	user_shared_ptr<int> test{ ff };
 
 	return 0;
 }
