@@ -11,19 +11,25 @@ int main()
 	int zz = 6;
 	user_shared_ptr<int> test{ ff };
 
-	for (auto buff : test.ptrlist)
-	{
-		cout << buff.first << ' ' << *buff.first << ' ' << buff.second << '\n';
-	}
+	cout << "Первый указатель до изменений: " << *test.get() << ' ';
 
 	test.reset(&zz);
 
-	for (auto buff : test.ptrlist)
-	{
-		cout << buff.first << ' ' << *buff.first << ' ' << buff.second << '\n';
-	}
+	cout << "\nПервый указатель после изменений: " << *test.get() << ' '; 
 
-	cout << test.get_typename();
+	cout << "\nТип первого указателя: " << test.get_typename();
+
+	user_shared_ptr<int> test2{ ff };
+
+	cout << "\nВторой указатель до изменений: " << *test2.get();
+
+	test.swapp(test2);
+
+	cout << "\nПервый указатель после свапа: " << *test.get() << "\nВторой указатель после свапа: " << *test2.get();
+
+	cout << "\nИспытание перегрузки оператора * на первом классе: " << * test;
+
+	cout << "\nИспытание перегрузки оператора -> на первом классе: " << *test.operator->();
 
 	return 0;
 }

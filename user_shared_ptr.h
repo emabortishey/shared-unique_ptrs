@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <algorithm>
 
 using namespace std;
 
@@ -71,7 +72,13 @@ public:
 		ptrlist.push_back(pair<T*&, int>(ptr, 1));
 	}
 
-	string get_typename() { return typeid(*ptr).name(); } 
+	string get_typename() { return typeid(*ptr).name(); }
+
+	void swapp(user_shared_ptr& obj) {  swap(ptr, obj.ptr); }
+
+	T& operator*() { return *ptr; }
+
+	T* operator->() { return ptr; }
 
 	~user_shared_ptr()
 	{
